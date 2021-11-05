@@ -1,0 +1,40 @@
+@import '../../static/styles/Variables.scss';
+@import '../../static/styles/Mixins.scss';
+
+.header {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color:$background-white;
+   -webkit-box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.6);
+  -moz-box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.6);
+  box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.6);
+}
+
+.header__list {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header__item {
+    @include global-item;
+}
+
+.header__portfolio-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header__portfolio-item {
+  @include global-item;
+}
+
+.header__button {
+  font-size: 14px;
+  background: none;
+}

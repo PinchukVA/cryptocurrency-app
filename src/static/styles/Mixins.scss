@@ -1,0 +1,11 @@
+@mixin global-item{
+  font-family: $font-family-second;
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 20px;
+  
+  &:first-letter{
+    text-transform: uppercase;
+  }
+
+}
