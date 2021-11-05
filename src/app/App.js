@@ -1,28 +1,28 @@
 import React  from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import './App.scss';
 import './Normalize.scss';
 
+import { Routs } from '../utils/routes.js'
 
 import { 
-  Header,
-  CryptoItem,
-  CryptoListHeader
-} from '../components/index.js'
+    MainPage, 
+    Coin, 
+    Home 
+} from '../pages'
 
+import { Header } from '../components/index'
 function App() {
   return (
-    <div className="app">
-      < Header/>
-        <section className="catalogue">
-          <CryptoListHeader/>
-          <ul className="catalogue__list">
-            <CryptoItem />
-            <CryptoItem />
-            <CryptoItem />
-          </ul>
-        </section>
-    </div>
+    <BrowserRouter>
+      <Header/>
+      <Routes>
+        <Route path={Routs.HomeRoute} element={<Home />} />
+        <Route path={Routs.MainRoute} element={<MainPage />} />
+        <Route path='/coin/:id' element={<Coin />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
