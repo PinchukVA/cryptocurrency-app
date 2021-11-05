@@ -1,0 +1,15 @@
+@import '../../../static/styles/Variables.scss';
+
+.l-list__item__button{
+  font-size: 34px;
+  background: none;
+  color: $color-yellow;
+  margin-bottom: 15px;
+
+  &:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+    color: $color-orange;
+    transition: all 0.3s;
+  }
+}

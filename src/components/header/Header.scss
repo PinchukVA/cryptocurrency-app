@@ -4,12 +4,13 @@
 .header {
   width: 100%;
   max-width: 1140px;
-  margin: 0px auto;
+  line-height: 50px;
+  margin: 0px auto 30px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   background-color:$background-white;
-   -webkit-box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.6);
+  -webkit-box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.6);
   -moz-box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.6);
   box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.6);
 }

@@ -6,20 +6,20 @@ import './Header.scss';
 
 function Header () {
   return (
-    <header className="header">
+    <header className='header'>
 
-      <ul className="header__list">
-        <li className="header__item">bitcoin : 61619 USD </li>
-        <li className="header__item">ethereum : 4507 USD</li>
-        <li className="header__item">binance-coin : 610 USD </li>
+      <ul className='header__list'>
+        <li className='header__item'>bitcoin : 61619 USD </li>
+        <li className='header__item'>ethereum : 4507 USD</li>
+        <li className='header__item'>binance-coin : 610 USD </li>
       </ul>
 
-      <ul className="header__portfolio-list">
-        <li className="header__portfolio-item">Portf. Vol : 61619 USD </li>
-        <li className="header__portfolio-item">+15 USD (2.52%)</li>
+      <ul className='header__portfolio-list'>
+        <li className='header__portfolio-item'>Portf. Vol : 61619 USD </li>
+        <li className='header__portfolio-item'>+15 USD (2.52%)</li>
       </ul>
 
-      <button className="header__button" >
+      <button className='header__button' >
         <FontAwesomeIcon icon={faUserAlt} />
       </button>
       
