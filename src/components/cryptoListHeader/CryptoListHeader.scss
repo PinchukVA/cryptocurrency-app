@@ -5,6 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-grow: 1;
+  flex-basis: 10%;
   font-family: $font-family-second;
   font-size: 16px;
   background-color:$background-yellow;
@@ -12,4 +14,28 @@
   padding: 15px 20px;
   border-radius: 5px;
   margin-bottom: 15px;
+
+  li{
+    text-align: center;
+  }
+  
+  .catalogue__header__number {
+    flex-grow: 2;
+  }
+
+  .catalogue__header__name {
+    flex-grow: 3;
+  }
+  
+  .catalogue__header__market {
+    flex-grow: 3;
+  }
+
+  .catalogue__header__price {
+    flex-grow: 2;
+  }
+
+  .catalogue__header__add {
+  }
+
 }

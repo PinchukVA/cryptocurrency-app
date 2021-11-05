@@ -1,10 +1,10 @@
 @import '../../../static/styles/Variables.scss';
 
-.l-list__item__button{
-  font-size: 34px;
+.p-list__item__button{
+  font-size: 24px;
   background: none;
   color: $color-yellow;
-  margin-bottom: 15px;
+  margin: 0px 5px 15px;
   transition: all 0.3s;
 
   &:hover {

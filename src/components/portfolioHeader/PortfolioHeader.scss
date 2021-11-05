@@ -1,0 +1,15 @@
+@import '../../static/styles/Variables.scss';
+
+.portfolio__header {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-family: $font-family-second;
+  font-size: 16px;
+  background-color:$background-yellow;
+  border: 1px solid $border-color-main;
+  padding: 15px 20px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
