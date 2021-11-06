@@ -36,6 +36,45 @@
     margin: 0px 3px;
     font-family: $font-family-name;
     color:$text-black;
+    transition: all 0.4s;
+
+    &:hover{
+      transition: all 0.4s;
+      color:$color-yellow;
+      cursor: pointer;
+    }
+  }
+
+  .coinPage__button {
+    text-decoration:none;
+    background:none;
+    font-size:28px;
+    margin: 0px 25px;
+    color:$color-grey;
+    transition: all 0.4s;
+
+    &:hover{
+      transition: all 0.4s;
+      color:$color-yellow;
+      cursor: pointer;
+      transform: scale(1.2);
+
+      &::after{
+        content: attr(data-title); 
+        position: absolute;
+        left: 90%; top: 80%; 
+        z-index: 1; 
+        color:$text-white;
+        border-radius: 10px;
+        background: rgba(121,125,127,0.6); 
+        font-family: $font-family-main;
+        font-size: 8px; 
+        padding: 3px 11px; 
+        border: 1px solid $border-color-main;
+      }
+
+    }
+
   }
 
   h4{
@@ -58,9 +97,10 @@
     font-family: $font-family-second;
     font-size: 16px;
     color:$text-black;
-    
 
     p{
+      display: inline-block;
+      padding: 0px 15px;
       font-size: 20px;
       color:$text-grey;
       font-weight: bold;
@@ -71,4 +111,36 @@
 .coinPage__graph {
   padding:15px 25px;
   width: 100%;
+
+  .coinPage__interval__wraper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    margin: 25px 0px;
+
+    p{
+      padding: 0px 15px;
+      font-size: 16px;
+      color:$text-grey;
+    }
+
+    button{
+      background-color: $background-lemon;
+      border: 1px solid  $border-color-main;
+      border-radius: 5px;
+      font-family: $font-family-second;
+      font-size: 16px;
+      padding: 4px 15px;
+      color:$text-black;
+      transition: all 0.4s;
+
+      &:hover{
+        transition: all 0.4s;
+        background-color: $background-orange;
+        cursor: pointer;
+      }
+    }
+
+  }
 }

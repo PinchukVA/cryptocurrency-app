@@ -22,8 +22,8 @@ function CryptoItem ({item, taskId, onClick}) {
             </p>
             </li>
             
-            <li className='l-list__item__market' > {`$ ${Number(item.marketCapUsd).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}`}</li>
-            <li className='l-list__item__price' > {`$ ${Number(item.priceUsd).toFixed(3).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}`}</li>
+            <li className='l-list__item__market' > $ {Number(item.marketCapUsd).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}</li>
+            <li className='l-list__item__price' >  $ {Number(item.priceUsd).toFixed(3).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}</li>
           </ul>
         </Link>
 

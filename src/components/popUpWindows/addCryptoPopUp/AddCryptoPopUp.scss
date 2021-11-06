@@ -5,7 +5,7 @@
   background-color: $background-black;
   opacity: 0.6;
   min-width: 100%;
-  min-height: 100vh;
+  min-height: 100vmax;
   z-index: 100;
   position: absolute;
   top: 0;
@@ -15,13 +15,14 @@
 }
 
 .popUpAdd__wraper {
-  min-width: 100%;
-  z-index: 200;
-  position: absolute;
-  top: 35%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+min-width: 100%;
+z-index: 200;
+position: fixed;
+overflow:hidden;
+top: 35%;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
 .popUpAdd__block {

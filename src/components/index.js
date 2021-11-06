@@ -7,3 +7,4 @@ export { default as UserPortfolioPopUp } from './popUpWindows/userPortfolioPopUp
 export { default as AddCryptoPopUp } from './popUpWindows/addCryptoPopUp/AddCryptoPopUp';
 export { default as PortfolioItem } from './portfolioItem/PortfolioItem';
 export { default as PortfolioHeader } from './portfolioHeader/PortfolioHeader';
+export { default as LineChart } from './cryptoChart/CryptoChart';

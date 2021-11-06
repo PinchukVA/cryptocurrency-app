@@ -12,5 +12,9 @@ export const cryptoApi = {
 
   getCoinInfo:  async (coin) =>{
     return   axios.get(`https://api.coincap.io/v2/assets/${coin}`)
+  },
+  
+  getCoinChart:  async (coin, interval) =>{
+    return   axios.get(`https://api.coincap.io/v2/assets/${coin}/history?interval=${interval}`)
   }
 }
