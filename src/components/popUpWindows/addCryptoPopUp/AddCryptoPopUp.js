@@ -4,7 +4,7 @@ import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import './AddCryptoPopUp.scss';
 
-function AddCryptoPopUp () {
+function AddCryptoPopUp ({onClick}) {
   return (
    <>
     <div className='popUpAdd__wraper'>
@@ -15,7 +15,7 @@ function AddCryptoPopUp () {
 
           <p className='popUpAdd__text' >Add coin:</p>
 
-          <button className='popUpAdd__close-button'>
+          <button className='popUpAdd__close-button' onClick ={onClick}>
             <FontAwesomeIcon icon={faTimesCircle} />
           </button>
 

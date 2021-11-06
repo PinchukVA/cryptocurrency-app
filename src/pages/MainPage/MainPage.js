@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import './MainPage.scss';
 
 import { 
@@ -19,7 +18,7 @@ function MainPage () {
   const [coinsList, setCoinsList] = useState([])
   const [isRequest, setIsRequest] = useState(true)
   
-  const handleAddCoin = (id) =>{
+  const handleAddCoin = (id='') =>{
     setIsAddCoin(!isAddCoin)
   }
 
@@ -35,11 +34,6 @@ function MainPage () {
         console.log('coinsListNew', coinsListNew)
         setCoinsList(coinsListNew)
         setIsRequest(false)
-        // if (res.data.length !== 0){
-        //   setTasksList(tasksListNew)
-        //   setPage(prevPage => prevPage + 1)
-        // }
-        // setIsRequest(false)
       }
     }catch(error){
       console.log(error)
@@ -56,7 +50,6 @@ function MainPage () {
           item={item}
           taskId = {index+1}
           onClick={() => handleAddCoin(item.id)}
-          // handleClick={() => handleOpenEditTask(item._id,item.name)}
         />
       ));
       return result;
@@ -76,7 +69,7 @@ function MainPage () {
         <CryptoListHeader/>
 
         {isRequest &&<img src={Eclipse_1s_145px}/>}
-        {isAddCoin && <AddCryptoPopUp/>}
+        {isAddCoin && <AddCryptoPopUp  onClick={() => handleAddCoin()}/>}
 
         <ul className="catalogue__list">
         {renderCoins(coinsList)}    

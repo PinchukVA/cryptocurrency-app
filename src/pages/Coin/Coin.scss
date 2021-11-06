@@ -1,0 +1,74 @@
+@import '../../static/styles/Variables.scss';
+
+.coinPage {
+  width: 100%;
+  max-width: 960px;
+  margin: 0px auto;
+}
+
+.coinPage__loader {
+  display:block;
+  margin: auto;
+}
+
+.coinPage__main {
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:$background-white;
+  -webkit-box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.6);
+  -moz-box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.6);
+  box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.6);
+}
+
+.coinPage__header {
+  width: 100%;
+  padding:15px 25px;
+  display:flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+
+  .coinPage__link {
+    text-decoration:none;
+    font-size:32px;
+    padding:0px 5px;
+    margin: 0px 3px;
+    font-family: $font-family-name;
+    color:$text-black;
+  }
+
+  h4{
+    font-size:14px;
+    padding: 0px 4px;
+    margin: 5px 3px;
+    color:$text-grey;
+    font-family: $font-family-second;
+  }
+}
+
+.coinPage__info {
+  padding:15px 25px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 20px;
+
+  span {
+    font-family: $font-family-second;
+    font-size: 16px;
+    color:$text-black;
+    
+
+    p{
+      font-size: 20px;
+      color:$text-grey;
+      font-weight: bold;
+    }
+  }
+}
+
+.coinPage__graph {
+  padding:15px 25px;
+  width: 100%;
+}

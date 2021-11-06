@@ -8,5 +8,9 @@ export const cryptoApi = {
         limit: 15
       }
     })
+  },
+
+  getCoinInfo:  async (coin) =>{
+    return   axios.get(`https://api.coincap.io/v2/assets/${coin}`)
   }
 }
