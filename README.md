@@ -6,3 +6,5 @@ Project coded by:  [Vitaly Pinchuk](https://www.linkedin.com/in/vitaly-pinchuk-8
 local storage is used to store personal information.
 Aplication develop with use -  **React, Redux, React-Router-Dom.**
 ***
+API: Coincap  
+[Coincap](https://docs.coincap.io/).  

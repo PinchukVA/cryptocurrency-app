@@ -3,6 +3,6 @@ export const Routs = {
   MainRoute: '/main'
 }
 
-export const linkToRoute = (history, route) => {
-  history.push(route)
+export const linkToRoute = (navigate, route) => {
+  navigate(route);
 }

@@ -1,22 +1,28 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 import './CryptoItem.scss';
 
 import { AddCryptoSmall } from '../../components/index'
 
-function CryptoItem () {
+
+function CryptoItem ({item, taskId, onClick}) {
   return (
 
       <li className='l-list__item'>
 
-        <ul className='l-list__item__wrapper'>
-          <li className='l-list__item__number' > 1</li>
-          <li className='l-list__item__name' > bitcoin</li>
-          <li className='l-list__item__market' > 1162410339002</li>
-          <li className='l-list__item__price' > 61619</li>
-        </ul>
+        <Link to={`/coin/${item.id}`} className="l-list__item-link">
+          <ul className='l-list__item__wrapper'>
+            <li className='l-list__item__number' > {taskId}</li>
+            <li className='l-list__item__name' > {item.name}</li>
+            <li className='l-list__item__market' > {`$ ${Number(item.marketCapUsd).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}`}</li>
+            <li className='l-list__item__price' > {`$ ${Number(item.priceUsd).toFixed(3).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}`}</li>
+          </ul>
+        </Link>
 
-        <AddCryptoSmall/>
+        <AddCryptoSmall
+          onClick ={onClick}
+        />
 
       </li>
 
