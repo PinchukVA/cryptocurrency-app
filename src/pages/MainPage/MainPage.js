@@ -131,7 +131,6 @@ function MainPage () {
       if (res.status === 200){
         
         const array = res.data.data
-        console.log('getTopCoins-array', array)
         dispatch(setTopCoins(array));
         
       }
@@ -143,18 +142,16 @@ function MainPage () {
     
   const getCoins = async () =>{
     try{
-      // setOffsetRequest(CurrentOffset)
       const offsetRequestCopy = CurrentOffset
       let res;
       res = await cryptoApi.getCoins(offsetRequestCopy)
       if (res.status === 200){
         await getTopCoins()
         const array = res.data.data
-        console.log('array', array)
         const coinsListNew = [...array]
-        console.log('coinsListNew', coinsListNew)
         setCoinsList(coinsListNew)
         setIsRequest(false)
+        window.scrollTo(0,0)
       }
     }catch(error){
       getCoins()
@@ -181,14 +178,8 @@ function MainPage () {
 
   
   useEffect(  () => {
-    console.log('useEffect-start')
     getCoins()
   }, [currentPage]);
-
-  console.log('Reloade page Main - PageNumber',PageNumber)
-  console.log('Reloade page Main - PageNumber +1',+PageNumber+1)
-  console.log('Reloade page Main - CurrentOffset',CurrentOffset)
-  // console.log('Reloade page Main - offsetRequest',offsetRequest)
 
   return (
     <>
@@ -212,7 +203,7 @@ function MainPage () {
         </ul>
 
         <Pagination
-          pageNumber ={PageNumber}
+          pageNumber ={currentPage}
           clickNext={()=>handleNextPage()}
           clickPrev={()=>handlePrevPage()}
         />

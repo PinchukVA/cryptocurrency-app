@@ -18,7 +18,6 @@ function UserPortfolioPopUp ({onClick}) {
   const { watchList} = appState;
 
   const deleteCoin = (id) => {
-    console.log('deleteCoin', id)
     const storeListCopy = [...watchList]
     const watchListCopy = JSON.parse(localStorage.getItem('watchList')) 
 

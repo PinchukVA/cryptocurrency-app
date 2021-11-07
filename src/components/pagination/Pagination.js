@@ -1,12 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBackward, faForward } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
 
 import './Pagination.scss';
-
-
 
 function Pagination ({pageNumber,clickPrev,clickNext}) {
   return (

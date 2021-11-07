@@ -21,7 +21,6 @@ function AddCryptoPopUp ({onClick,value,onChange,onSubmit,errorMesage}) {
 
         </div>
         
-        
         <form className='popUpAdd__form' onSubmit={onSubmit}>
           <label 
             className='popUpAdd__label'

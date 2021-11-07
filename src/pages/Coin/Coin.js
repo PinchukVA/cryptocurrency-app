@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import './Coin.scss';
 import Eclipse_1s_145px from '../../static/images/svg/Eclipse_1s_145px.svg'
@@ -22,9 +22,6 @@ function Coin () {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
-  const appState = useSelector( state => state.Reducer)
-
-  const { headerCoins, watchList,totalInvest} = appState;
 
   const [coinsInfo, setCoinInfo] = useState()
   const [isRequest, setIsRequest] = useState(true)
@@ -47,7 +44,6 @@ function Coin () {
       if (res.status === 200){
         
         const array = res.data.data
-        console.log('getTopCoins-array', array)
         dispatch(setTopCoins(array));
         
       }
@@ -175,7 +171,6 @@ function Coin () {
   }
 
   useEffect(  () => {
-    console.log('useEffect-start')
     getCoinInfo()
   }, []);
 
