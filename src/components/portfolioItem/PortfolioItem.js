@@ -8,7 +8,7 @@ import {
   DeleteCryptoSmall
 } from '../index'
 
-function PortfolioItem ({item}) {
+function PortfolioItem ({item, onClick}) {
 
   return (
     <>
@@ -20,7 +20,7 @@ function PortfolioItem ({item}) {
           <li className='p-list__item__price' >$ {Number(item.totInvest).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}</li>
         </ul>
 
-        <  DeleteCryptoSmall />
+        <  DeleteCryptoSmall onClick={onClick}/>
 
       </li>
 

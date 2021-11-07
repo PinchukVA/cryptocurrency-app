@@ -4,9 +4,9 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import './DeleteCryptoSmall.scss';
 
-function DeleteCryptoSmall () {
+function DeleteCryptoSmall ({onClick}) {
   return (
-        <button className='p-list__item__button'>
+        <button className='p-list__item__button' onClick={onClick}>
            <FontAwesomeIcon icon={faTrash} />
         </button>
   );

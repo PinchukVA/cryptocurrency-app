@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import './MainPage.scss';
 
@@ -15,14 +15,11 @@ import Eclipse_1s_145px from '../../static/images/svg/Eclipse_1s_145px.svg'
 
 import { cryptoApi } from '../../api/CryptoApi'
 
-import { setTopCoins,setWatchList } from '../../redux/actions/Actions.js'
+import { setTopCoins } from '../../redux/actions/Actions.js'
 
 function MainPage () {
   const dispatch = useDispatch();
-  const appState = useSelector( state => state.Reducer)
-
-  const { watchList } = appState;
-
+  
   const [isAddCoin, setIsAddCoin] = useState(false)
   const [coinsList, setCoinsList] = useState([])
   const [isRequest, setIsRequest] = useState(true)
