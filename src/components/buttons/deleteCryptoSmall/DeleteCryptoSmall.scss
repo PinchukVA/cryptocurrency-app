@@ -7,6 +7,10 @@
   margin: 0px 5px 15px;
   transition: all 0.3s;
 
+  @media (max-width: 540px) {
+    font-size: 20px;
+    }
+
   &:hover {
     transform: scale(1.2);
     cursor: pointer;

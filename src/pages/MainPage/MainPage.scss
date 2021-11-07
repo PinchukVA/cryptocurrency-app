@@ -1,12 +1,18 @@
 .catalogue {
   width: 100%;
   max-width: 960px;
+  padding: 0px 20px;
   margin: 0px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+
+  @media (max-width: 720px) {
+    font-size: 12px;
+  }
 }
+
 .catalogue__list {
   width: 100%;
   display: flex;

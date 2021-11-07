@@ -7,6 +7,14 @@
   margin-bottom: 15px;
   transition: all 0.3s;
 
+  @media (max-width: 720px) {
+    font-size: 24px;
+  }
+
+  @media (max-width: 540px) {
+    font-size: 18px;
+  }
+
   &:hover {
     transform: scale(1.2);
     cursor: pointer;

@@ -29,7 +29,7 @@ function Header ({onClick}) {
 
       <ul className='header__portfolio-list'>
         <li className='header__portfolio-item'> {watchList.length === 0 ? 'Portfolio empty' : ` Portf. Vol :  ${totalInvest} USD`} </li>
-        <li className='header__portfolio-item'>{watchList.length === 0 ? '' : ' Portf. Vol : You Rich'}</li>
+        <li className='header__portfolio-item'>{watchList.length === 0 ? '' : ' ..calculating'}</li>
       </ul>
 
       <button className='header__button' onClick={onClick}>

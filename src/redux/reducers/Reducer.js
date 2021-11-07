@@ -9,29 +9,11 @@ const getTotalInvest = () =>{
   return totalValue.totInvest
 }
 
-const getInvestResult = async () =>{
-  try{
-    const watchListCopy = JSON.parse(localStorage.getItem('watchList'))
-    
-    if (watchListCopy === null || watchListCopy.length === 0 ){
-      return 0
-    }
-    
-    const investResult = watchListCopy.map((item) => {
-      let res = `https://api.coincap.io/v2/assets/${item.id}`
-      return res
-      
-    })
-  }catch(error){
-    console.log(error)
-  }
-}
-
 const initialState = {
   headerCoins:[],
   watchList: JSON.parse(localStorage.getItem('watchList')) || [],
   totalInvest:getTotalInvest(),
-  InvestResult:getInvestResult(),
+  // InvestResult:investingResult,
 };
 
 export const Reducer = (state = initialState, action) => {
