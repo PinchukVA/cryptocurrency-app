@@ -10,6 +10,14 @@ export const cryptoApi = {
     })
   },
 
+  getTopCoins:  async () =>{
+    return   axios.get(`https://api.coincap.io/v2/assets`,{
+      params: {
+        limit: 3
+      }
+    })
+  },
+
   getCoinInfo:  async (coin) =>{
     return   axios.get(`https://api.coincap.io/v2/assets/${coin}`)
   },

@@ -61,6 +61,12 @@
   }
 }
 
+.popUpPortfolio__message {
+  font-family: $font-family-second;
+  font-size: 19px;
+  padding: 10px 35px;
+  margin: 15px auto;
+}
 
 .slideDown{
   animation-name: pullDown;

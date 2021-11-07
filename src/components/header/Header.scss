@@ -23,6 +23,11 @@
 
 .header__item {
     @include global-item;
+
+    span{
+      color:$text-grey;
+      opacity:0.6;
+    }
 }
 
 .header__portfolio-list {
@@ -38,4 +43,11 @@
 .header__button {
   font-size: 14px;
   background: none;
+  transition: all 0.4s;
+
+  &:hover{
+    cursor:pointer;
+    color:$color-yellow;
+    transition: all 0.4s;
+  }
 }

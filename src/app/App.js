@@ -12,11 +12,10 @@ import {
     Home 
 } from '../pages'
 
-import { Header } from '../components/index'
+
 function App() {
   return (
     <BrowserRouter>
-      <Header/>
       <Routes>
         <Route path={Routs.HomeRoute} element={<Home />} />
         <Route path={Routs.MainRoute} element={<MainPage />} />

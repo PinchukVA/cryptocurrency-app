@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
 
 import './Coin.scss';
 import Eclipse_1s_145px from '../../static/images/svg/Eclipse_1s_145px.svg'
@@ -11,10 +12,14 @@ import { cryptoApi } from '../../api/CryptoApi'
 import { 
   LineChart,
   AddCryptoPopUp,
+  UserPortfolioPopUp,
+  Header
 } from '../../components/index'
 
-function Coin () {
+import { setTopCoins } from '../../redux/actions/Actions.js'
 
+function Coin () {
+  const dispatch = useDispatch();
   const { id } = useParams();
 
   const [coinsInfo, setCoinInfo] = useState()
@@ -23,7 +28,30 @@ function Coin () {
   const [chartLabels, setChartLabels] = useState([])
   const [chartValues, setChartValues] = useState([])
   const [isAddCoin, setIsAddCoin] = useState(false)
+  const [isPortfolio, setIsPortfolio] = useState(false)
+  const [coinQty, setCoinQty] = useState()
+  const [coinQtyError, setCoinQtyError] = useState('')
 
+  const handleOpenPortfolio= () =>{
+    setIsPortfolio(!isPortfolio)
+  }
+
+  const getTopCoins = async () =>{
+    try{
+      let res;
+      res = await cryptoApi.getTopCoins()
+      if (res.status === 200){
+        
+        const array = res.data.data
+        console.log('getTopCoins-array', array)
+        dispatch(setTopCoins(array));
+        
+      }
+    }catch(error){
+      getTopCoins()
+      console.log(error)
+    }
+  }
 
   const getCoinInfo = async () =>{
     try{
@@ -31,6 +59,7 @@ function Coin () {
       if (res.status === 200){
         const info = res.data.data
         await getChartData()
+        await getTopCoins()
         setIsChartAdd(false)
         setCoinInfo(info)
         setIsRequest(false)
@@ -68,11 +97,29 @@ function Coin () {
     return Number(str).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ")
   }
 
+  const handleChangeCoinQty = (e) =>{
+    setCoinQty(e.target.value)
+    setCoinQtyError('')
+  }
+
+  const handleSubmitCoinToPortfolio = (e) =>{
+    e.preventDefault();
+    const coinQtyCopy = coinQty;
+    const re = new RegExp('^[-+]?[0-9]*[.,]?[0-9]+(?:[eE][-+]?[0-9]+)?$');
+    const result = re.test(coinQtyCopy);
+
+    if (result){
+      console.log('handleSubmitCoinToPortfolio - coinQtyCopy', coinQtyCopy)
+    }else{
+      console.log('handleSubmitCoinToPortfolio - no')
+    }
+  }
+
   const handleChangeInterval = (e) =>{
     getChartData(e.target.value)
   }
 
-  const handleAddCoin = (id='') =>{
+  const handleAddCoin = () =>{
     setIsAddCoin(!isAddCoin)
   }
 
@@ -84,7 +131,14 @@ function Coin () {
 
   return (
     <>
-    {isAddCoin && <AddCryptoPopUp  onClick={handleAddCoin}/>}
+    <Header onClick={handleOpenPortfolio}/>
+    {isPortfolio && <UserPortfolioPopUp onClick={handleOpenPortfolio}/>}
+
+    {isAddCoin && <AddCryptoPopUp 
+          onSubmit={handleSubmitCoinToPortfolio} 
+          onChange={handleChangeCoinQty} 
+          value={coinQty} 
+          onClick={handleAddCoin}/>}
      <section className='coinPage'>
 
       {isRequest &&<img className='coinPage__loader' src={Eclipse_1s_145px}/>}
@@ -108,7 +162,7 @@ function Coin () {
           <span>
             <p>Market Cap:</p>$ {changeDataView(coinsInfo.marketCapUsd)}
           </span>
-          <span><p>Price:</p> {coinsInfo.priceUsd}</span>
+          <span><p>Price:</p> $ {coinsInfo.priceUsd.slice(0,7)}</span>
           <span>
             <p>Volume 24h:</p>$ {changeDataView(coinsInfo.volumeUsd24Hr)} 
           </span>

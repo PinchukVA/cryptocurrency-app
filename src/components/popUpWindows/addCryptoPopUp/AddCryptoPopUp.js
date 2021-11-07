@@ -4,7 +4,7 @@ import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import './AddCryptoPopUp.scss';
 
-function AddCryptoPopUp ({onClick}) {
+function AddCryptoPopUp ({onClick,value,onChange,onSubmit}) {
   return (
    <>
     <div className='popUpAdd__wraper'>
@@ -13,7 +13,7 @@ function AddCryptoPopUp ({onClick}) {
         
         <div className='popUpAdd__info'>
 
-          <p className='popUpAdd__text' >Add coin:</p>
+          <p className='popUpAdd__text' >Add coin to portfolio</p>
 
           <button className='popUpAdd__close-button' onClick ={onClick}>
             <FontAwesomeIcon icon={faTimesCircle} />
@@ -22,7 +22,7 @@ function AddCryptoPopUp ({onClick}) {
         </div>
         
         
-        <form className='popUpAdd__form'>
+        <form className='popUpAdd__form' onSubmit={onSubmit}>
           <label 
             className='popUpAdd__label'
             htmlFor='addCryptoInput'
@@ -34,6 +34,8 @@ function AddCryptoPopUp ({onClick}) {
             className='popUpAdd__input'
             name='addCryptoInput'
             type='text'
+            value={value}
+            onChange={onChange}
           />
 
           <input 
