@@ -6,14 +6,14 @@ import './CryptoItem.scss';
 import { AddCryptoSmall } from '../../components/index'
 
 
-function CryptoItem ({item, taskId, onClick}) {
+function CryptoItem ({item, onClick}) {
   return (
 
       <li className='l-list__item'>
 
         <Link to={`/coin/${item.id}`} className="l-list__item-link">
           <ul className='l-list__item__wrapper'>
-            <li className='l-list__item__number' > {taskId}</li>
+            <li className='l-list__item__number' > {item.rank}</li>
 
             <li className='l-list__item__name' > 
             {item.name} 

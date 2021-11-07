@@ -2,10 +2,11 @@ import axios from 'axios'
 
 export const cryptoApi = {
 
-  getCoins:  async () =>{
+  getCoins:  async (offset) =>{
     return   axios.get(`https://api.coincap.io/v2/assets`,{
       params: {
-        limit: 15
+        limit: 10,
+        offset:offset
       }
     })
   },

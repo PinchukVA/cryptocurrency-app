@@ -1,0 +1,41 @@
+@import '../../static/styles/Variables.scss';
+
+.pagination {
+  margin: 10px auto;
+  max-width: 40%;
+  width:100%;
+  display: flex;
+  align-aitems: center;
+  justify-content: center;
+
+  .pagination__button {
+    margin: 3px 15px;
+    padding: 0px 30px;
+    height:35px;
+    font-size: 20px;
+    
+    color: $text-white;
+    background: linear-gradient(90deg, rgba(230,126,34,1) 0%, rgba(244,208,63,1) 100%);
+    border-radius: 7px;
+    transition: all 0.6s;
+
+    &:hover{
+      cursor:pointer;
+      transition: all 0.6s;
+      background: linear-gradient(90deg, rgba(48,230,34,1) 0%, rgba(244,208,63,1) 100%);
+    }
+
+  }
+
+  .pagination__page {
+    font-family: $font-family-main;
+    font-size: 20px;
+    background-color:$background-white;
+    padding: 4px 12px;
+    color:$text-black;
+    margin: 5px 14px;
+    border-radius:7px;
+    border: 1px solid $border-color-black;
+  }
+
+}

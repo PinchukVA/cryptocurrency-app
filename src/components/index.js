@@ -8,3 +8,4 @@ export { default as AddCryptoPopUp } from './popUpWindows/addCryptoPopUp/AddCryp
 export { default as PortfolioItem } from './portfolioItem/PortfolioItem';
 export { default as PortfolioHeader } from './portfolioHeader/PortfolioHeader';
 export { default as LineChart } from './cryptoChart/CryptoChart';
+export { default as Pagination } from './pagination/Pagination';

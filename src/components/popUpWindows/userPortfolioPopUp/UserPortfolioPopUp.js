@@ -29,8 +29,6 @@ function UserPortfolioPopUp ({onClick}) {
     dispatch(setWatchList(storeListCopy));
   }
 
-  
-
   const renderLists = (arr) => {
 
     if (arr.length === 0){

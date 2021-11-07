@@ -19,7 +19,10 @@ function App() {
       <Routes>
         <Route path={Routs.HomeRoute} element={<Home />} />
         <Route path='/coin' element={<Home />} />
-        <Route path={Routs.MainRoute} element={<MainPage />} />
+        <Route path='/main' element={<Home />} />
+        <Route path='/main/page/0' element={<Home />} />
+        <Route path='/main/page/' element={<Home />} />
+        <Route path='/main/page/:PageNumber' element={<MainPage />} />
         <Route path='/coin/:id' element={<Coin />} />
       </Routes>
     </BrowserRouter>

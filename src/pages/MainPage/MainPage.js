@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useParams, useNavigate} from 'react-router-dom'
 
 import './MainPage.scss';
 
@@ -8,7 +9,8 @@ import {
   CryptoListHeader,
   AddCryptoPopUp,
   UserPortfolioPopUp,
-  Header
+  Header,
+  Pagination
 } from '../../components/index'
 
 import Eclipse_1s_145px from '../../static/images/svg/Eclipse_1s_145px.svg'
@@ -18,8 +20,14 @@ import { cryptoApi } from '../../api/CryptoApi'
 import { setTopCoins, setWatchList } from '../../redux/actions/Actions.js'
 
 function MainPage () {
+  let navigate = useNavigate();
   const dispatch = useDispatch();
+  const  { PageNumber }  = useParams();
   
+
+  const CurrentOffset = PageNumber == 1 ? 0 : (PageNumber*10) -10
+  
+  // const [offsetRequest, setOffsetRequest] = useState(CurrentOffset)
   const [isAddCoin, setIsAddCoin] = useState(false)
   const [coinsList, setCoinsList] = useState([])
   const [isRequest, setIsRequest] = useState(true)
@@ -27,6 +35,22 @@ function MainPage () {
   const [coinQtyError, setCoinQtyError] = useState(false)
   const [idCoinToAdd, setIdCoinToAdd] = useState('')
   const [isPortfolio, setIsPortfolio] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const handleNextPage = () =>{
+    
+    const nextPage = +PageNumber+1
+    navigate(`/main/page/${nextPage}`)
+    setCurrentPage(nextPage)
+  }
+
+  const handlePrevPage = () =>{
+    
+    const nextPage = +PageNumber-1
+    navigate(`/main/page/${nextPage}`)
+    setCurrentPage(nextPage)
+  }
+  
 
   const handleOpenPortfolio= () =>{
     setIsPortfolio(!isPortfolio)
@@ -81,7 +105,7 @@ function MainPage () {
           qty:+changeCoin.qty+ +coinQtyCopy,
           totInvest: +changeCoin.totInvest+ +sumCost.toFixed(0)
         }
-        
+
         const watchListNew = watchListCopy.map(obj => {
           if (obj.id === newCoin.id) {
             return newCoin;
@@ -119,8 +143,10 @@ function MainPage () {
     
   const getCoins = async () =>{
     try{
+      // setOffsetRequest(CurrentOffset)
+      const offsetRequestCopy = CurrentOffset
       let res;
-      res = await cryptoApi.getCoins()
+      res = await cryptoApi.getCoins(offsetRequestCopy)
       if (res.status === 200){
         await getTopCoins()
         const array = res.data.data
@@ -157,7 +183,12 @@ function MainPage () {
   useEffect(  () => {
     console.log('useEffect-start')
     getCoins()
-  }, []);
+  }, [currentPage]);
+
+  console.log('Reloade page Main - PageNumber',PageNumber)
+  console.log('Reloade page Main - PageNumber +1',+PageNumber+1)
+  console.log('Reloade page Main - CurrentOffset',CurrentOffset)
+  // console.log('Reloade page Main - offsetRequest',offsetRequest)
 
   return (
     <>
@@ -179,6 +210,12 @@ function MainPage () {
         <ul className="catalogue__list">
         {renderCoins(coinsList)}    
         </ul>
+
+        <Pagination
+          pageNumber ={PageNumber}
+          clickNext={()=>handleNextPage()}
+          clickPrev={()=>handlePrevPage()}
+        />
 
     </section>
     </>
