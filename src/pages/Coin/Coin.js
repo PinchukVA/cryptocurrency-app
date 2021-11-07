@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import './Coin.scss';
 import Eclipse_1s_145px from '../../static/images/svg/Eclipse_1s_145px.svg'
@@ -19,6 +20,7 @@ import {
 import { setTopCoins, setWatchList } from '../../redux/actions/Actions.js'
 
 function Coin () {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
   const appState = useSelector( state => state.Reducer)
@@ -200,7 +202,7 @@ function Coin () {
         
         <div  className='coinPage__header'>
 
-          <button className='coinPage__button' data-title='Return'><FontAwesomeIcon icon={faArrowCircleLeft} /></button>
+          <button className='coinPage__button' data-title='Return' onClick={() => navigate(-1)}><FontAwesomeIcon icon={faArrowCircleLeft} /></button>
           <a href={coinsInfo.explorer} className='coinPage__link'>{coinsInfo.name}</a>
           <h4>{coinsInfo.symbol}</h4>
           <button className='coinPage__button' data-title='Add to portfolio' onClick ={handleAddCoin}><FontAwesomeIcon icon={faPlusCircle} /></button>
