@@ -15,7 +15,7 @@ function Header ({onClick}) {
     let result;
 
       result = arr.map((item) => (
-        <li className='header__item'>{item.name} : <span>{item.priceUsd.slice(0,7)} USD</span> </li>
+        <li className='header__item' key={item.id}>{item.name} : <span>{item.priceUsd.slice(0,7)} USD</span> </li>
       ));
       return result;
   }

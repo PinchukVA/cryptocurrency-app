@@ -35,7 +35,7 @@ function MainPage () {
   const [coinQtyError, setCoinQtyError] = useState(false)
   const [idCoinToAdd, setIdCoinToAdd] = useState('')
   const [isPortfolio, setIsPortfolio] = useState(false)
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(PageNumber)
 
   const handleNextPage = () =>{
     
@@ -180,7 +180,9 @@ function MainPage () {
   useEffect(  () => {
     getCoins()
   }, [currentPage]);
-
+  console.log('Start Main Page - check currentPage ', currentPage)
+  console.log('Start Main Page - check PageNumber ', PageNumber)
+  
   return (
     <>
     <Header onClick={handleOpenPortfolio}/>
