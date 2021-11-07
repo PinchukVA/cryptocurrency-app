@@ -18,6 +18,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path={Routs.HomeRoute} element={<Home />} />
+        <Route path='/coin' element={<Home />} />
         <Route path={Routs.MainRoute} element={<MainPage />} />
         <Route path='/coin/:id' element={<Coin />} />
       </Routes>
