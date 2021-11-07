@@ -105,6 +105,16 @@ transition: all 0.3s;
   }
 }
 
+.popUpAdd__error {
+  font-family: $font-family-second;
+  font-size: 14px;
+  background-color:$background-white;
+  padding: 10px 12px;
+  color:$color-error;
+  margin: 5px auto 14px;
+  border: 1px solid $color-error;
+}
+
 .slideDown{
   animation-name: pullDown;
   -webkit-animation-name: pullDown;

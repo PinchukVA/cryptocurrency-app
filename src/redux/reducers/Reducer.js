@@ -1,8 +1,6 @@
-// const localStorTopCoins = localStorage.getItem('Top Coins')
-
 const initialState = {
   headerCoins:[],
-  watchList:[]
+  watchList: JSON.parse(localStorage.getItem('watchList')) || []
 };
 
 export const Reducer = (state = initialState, action) => {
@@ -12,7 +10,11 @@ export const Reducer = (state = initialState, action) => {
     case 'SET_TOP_COINS':
       console.log('SET_TOP_COINS',action.payload)
       return {...state,headerCoins: payload}
+      case 'SET_WATCH_LIST':
+      console.log('SET_TOP_COINS',action.payload)
+      return {...state,watchList: payload}
     default:
       return {...state}
   }
 }
+

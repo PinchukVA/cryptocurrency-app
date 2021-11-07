@@ -4,3 +4,9 @@ export const setTopCoins = data => {
     payload: data
   }
 }
+export const setWatchList = data => {
+  return {
+    type: 'SET_WATCH_LIST',
+    payload: data
+  }
+}

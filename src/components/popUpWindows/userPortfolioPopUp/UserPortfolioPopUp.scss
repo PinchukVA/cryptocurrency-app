@@ -7,7 +7,7 @@
   min-width: 100%;
   min-height: 100vmax;
   z-index: 100;
-  position: absolute;
+  position: fixed;
   top: 0;
   display: flex;
   align-items: center;
@@ -17,8 +17,8 @@
 .popUpPortfolio__wraper {
   min-width: 100%;
   z-index: 200;
-  position: fixed;
-  top: 35%;
+  position: absolute;
+  top: 5%;
   display: flex;
   align-items: center;
   justify-content: center;

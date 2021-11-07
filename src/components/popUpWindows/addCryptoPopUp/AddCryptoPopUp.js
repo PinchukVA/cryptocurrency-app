@@ -4,7 +4,7 @@ import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 import './AddCryptoPopUp.scss';
 
-function AddCryptoPopUp ({onClick,value,onChange,onSubmit}) {
+function AddCryptoPopUp ({onClick,value,onChange,onSubmit,errorMesage}) {
   return (
    <>
     <div className='popUpAdd__wraper'>
@@ -44,7 +44,7 @@ function AddCryptoPopUp ({onClick,value,onChange,onSubmit}) {
             value = 'Add'
           />
         </form>
-
+        {errorMesage && <span className='popUpAdd__error'> Value must be number. Try again</span>}
       </div>
 
     </div>

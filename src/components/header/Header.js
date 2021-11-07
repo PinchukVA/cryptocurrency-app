@@ -1,14 +1,14 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserAlt } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import './Header.scss';
 
 function Header ({onClick}) {
 
   const appState = useSelector( state => state.Reducer)
-  const dispatch = useDispatch();
+
   const { headerCoins, watchList,} = appState;
 
   const renderTopCoins = (arr) => {

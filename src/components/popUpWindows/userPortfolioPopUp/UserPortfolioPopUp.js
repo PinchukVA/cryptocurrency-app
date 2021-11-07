@@ -23,6 +23,14 @@ function UserPortfolioPopUp ({onClick}) {
         <p className='popUpPortfolio__message'>Sorry, you portfolio is empty. Add coin to portfolio</p>
       )
     }
+    const result = arr.map((item) => (
+      < PortfolioItem
+        key={item.id}
+        item={item}
+      />
+    ));
+
+    return result;
   }
 
   return (

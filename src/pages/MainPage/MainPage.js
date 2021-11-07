@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './MainPage.scss';
 
@@ -15,33 +15,40 @@ import Eclipse_1s_145px from '../../static/images/svg/Eclipse_1s_145px.svg'
 
 import { cryptoApi } from '../../api/CryptoApi'
 
-import { setTopCoins } from '../../redux/actions/Actions.js'
+import { setTopCoins,setWatchList } from '../../redux/actions/Actions.js'
 
 function MainPage () {
   const dispatch = useDispatch();
+  const appState = useSelector( state => state.Reducer)
+
+  const { watchList } = appState;
 
   const [isAddCoin, setIsAddCoin] = useState(false)
   const [coinsList, setCoinsList] = useState([])
   const [isRequest, setIsRequest] = useState(true)
   const [coinQty, setCoinQty] = useState()
-  const [coinQtyError, setCoinQtyError] = useState('')
+  const [coinQtyError, setCoinQtyError] = useState(false)
+  const [idCoinToAdd, setIdCoinToAdd] = useState('')
   const [isPortfolio, setIsPortfolio] = useState(false)
 
   const handleOpenPortfolio= () =>{
     setIsPortfolio(!isPortfolio)
   }
 
-  const handleAddCoin = () =>{
+  const handleAddCoin = (id) =>{
     setIsAddCoin(!isAddCoin)
+    setIdCoinToAdd(id)
   }
 
   const closeAddCoin = () =>{
     setIsAddCoin(!isAddCoin)
+    setCoinQtyError(false)
+    setCoinQty('')
   }
 
   const handleChangeCoinQty = (e) =>{
     setCoinQty(e.target.value)
-    setCoinQtyError('')
+    setCoinQtyError(false)
   }
 
   const handleSubmitCoinToPortfolio = (e) =>{
@@ -49,11 +56,36 @@ function MainPage () {
     const coinQtyCopy = coinQty;
     const re = new RegExp('^[-+]?[0-9]*[.,]?[0-9]+(?:[eE][-+]?[0-9]+)?$');
     const result = re.test(coinQtyCopy);
+    const coinIdCopy = idCoinToAdd;
+    const coinsListCopy = JSON.parse(JSON.stringify(coinsList))
+    const watchListCopy = JSON.parse(localStorage.getItem('watchList')) 
+    console.log('handleSubmitCoinToPortfolio - watchListCopy before', watchListCopy)
 
     if (result){
-      console.log('handleSubmitCoinToPortfolio - coinQtyCopy', coinQtyCopy)
+      const coin = coinsListCopy.find(item => item.id === coinIdCopy);
+      console.log('handleSubmitCoinToPortfolio - coin', coin)
+      const sumCost = coinQtyCopy * coin.priceUsd
+      console.log('handleSubmitCoinToPortfolio - sumCost', sumCost)
+      const watchCoin = watchListCopy.findIndex(item => item.id === coinIdCopy);
+      if ( watchCoin === -1) {
+        const newCoin = {
+          id: coin.id,
+          name: coin.name,
+          qty:coinQtyCopy,
+          totInvest: sumCost
+        }
+        console.log('handleSubmitCoinToPortfolio - newCoin', newCoin)
+        watchListCopy.push(newCoin)
+        localStorage.setItem('watchList', JSON.stringify(watchListCopy))
+        // dispatch(setWatchList(watchListCopy));
+        console.log('handleSubmitCoinToPortfolio - watchListCopy after', watchListCopy)
+        closeAddCoin()
+      }
+      console.log('handleSubmitCoinToPortfolio - watchCoin', watchCoin)
+
     }else{
       console.log('handleSubmitCoinToPortfolio - no')
+      setCoinQtyError(true)
     }
     
   }
@@ -103,7 +135,7 @@ function MainPage () {
           key={item.id}
           item={item}
           taskId = {index+1}
-          onClick={() => handleAddCoin()}
+          onClick={() => handleAddCoin(item.id)}
         />
       ));
       return result;
@@ -131,6 +163,7 @@ function MainPage () {
           onSubmit={handleSubmitCoinToPortfolio} 
           onChange={handleChangeCoinQty} 
           value={coinQty} 
+          errorMesage={coinQtyError}
           onClick={closeAddCoin}/>}
 
         <ul className="catalogue__list">

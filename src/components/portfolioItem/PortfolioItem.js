@@ -8,18 +8,16 @@ import {
   DeleteCryptoSmall
 } from '../index'
 
-function PortfolioItem () {
+function PortfolioItem ({item}) {
 
   return (
     <>
       <li className='p-list__item'>
 
         <ul className='p-list__item__wrapper'>
-          <li className='p-list__item__name' > bitcoin</li>
-          <li className='p-list__item__qty' > 2</li>
-          <li className='p-list__item__price' > 114785</li>
-          <li className='p-list__item__price' > 61619</li>
-          <li className='p-list__item__cost' > 125485</li>
+          <li className='p-list__item__name' > {item.name}</li>
+          <li className='p-list__item__qty' > {item.qty}</li>
+          <li className='p-list__item__price' >$ {Number(item.totInvest).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ")}</li>
         </ul>
 
         <  DeleteCryptoSmall />
