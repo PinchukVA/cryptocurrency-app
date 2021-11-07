@@ -55,14 +55,11 @@ function MainPage () {
     const result = re.test(coinQtyCopy);
     const coinIdCopy = idCoinToAdd;
     const coinsListCopy = JSON.parse(JSON.stringify(coinsList))
-    const watchListCopy = JSON.parse(localStorage.getItem('watchList')) 
-    console.log('handleSubmitCoinToPortfolio - watchListCopy before', watchListCopy)
+    const watchListCopy = JSON.parse(localStorage.getItem('watchList')) || []
 
     if (result){
       const coin = coinsListCopy.find(item => item.id === coinIdCopy);
-      console.log('handleSubmitCoinToPortfolio - coin', coin)
       const sumCost = coinQtyCopy * coin.priceUsd
-      console.log('handleSubmitCoinToPortfolio - sumCost', sumCost)
       const watchCoin = watchListCopy.findIndex(item => item.id === coinIdCopy);
       if ( watchCoin === -1) {
         const newCoin = {
@@ -71,17 +68,33 @@ function MainPage () {
           qty:coinQtyCopy,
           totInvest: sumCost.toFixed(0)
         }
-        console.log('handleSubmitCoinToPortfolio - newCoin', newCoin)
         watchListCopy.push(newCoin)
         localStorage.setItem('watchList', JSON.stringify(watchListCopy))
         dispatch(setWatchList(watchListCopy));
-        console.log('handleSubmitCoinToPortfolio - watchListCopy after', watchListCopy)
+        closeAddCoin()
+      }else{
+        const changeCoin = watchListCopy.find(item => item.id === coinIdCopy);
+
+        const newCoin = {
+          id: changeCoin.id,
+          name: changeCoin.name,
+          qty:+changeCoin.qty+ +coinQtyCopy,
+          totInvest: +changeCoin.totInvest+ +sumCost.toFixed(0)
+        }
+        
+        const watchListNew = watchListCopy.map(obj => {
+          if (obj.id === newCoin.id) {
+            return newCoin;
+          }
+          return obj;
+        });
+
+        localStorage.setItem('watchList', JSON.stringify(watchListNew))
+        dispatch(setWatchList(watchListNew));
         closeAddCoin()
       }
-      console.log('handleSubmitCoinToPortfolio - watchCoin', watchCoin)
 
     }else{
-      console.log('handleSubmitCoinToPortfolio - no')
       setCoinQtyError(true)
     }
     

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './Coin.scss';
 import Eclipse_1s_145px from '../../static/images/svg/Eclipse_1s_145px.svg'
@@ -16,11 +16,14 @@ import {
   Header
 } from '../../components/index'
 
-import { setTopCoins } from '../../redux/actions/Actions.js'
+import { setTopCoins, setWatchList } from '../../redux/actions/Actions.js'
 
 function Coin () {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const appState = useSelector( state => state.Reducer)
+
+  const { headerCoins, watchList,totalInvest} = appState;
 
   const [coinsInfo, setCoinInfo] = useState()
   const [isRequest, setIsRequest] = useState(true)
@@ -51,6 +54,12 @@ function Coin () {
       getTopCoins()
       console.log(error)
     }
+  }
+
+  const closeAddCoin = () =>{
+    setIsAddCoin(!isAddCoin)
+    setCoinQtyError(false)
+    setCoinQty('')
   }
 
   const getCoinInfo = async () =>{
@@ -107,12 +116,53 @@ function Coin () {
     const coinQtyCopy = coinQty;
     const re = new RegExp('^[-+]?[0-9]*[.,]?[0-9]+(?:[eE][-+]?[0-9]+)?$');
     const result = re.test(coinQtyCopy);
+    const coinIdCopy = id;
+    const coinCopy = coinsInfo
+    const watchListCopy = JSON.parse(localStorage.getItem('watchList')) || []
 
     if (result){
-      console.log('handleSubmitCoinToPortfolio - coinQtyCopy', coinQtyCopy)
+      
+      const sumCost = coinQtyCopy * coinCopy.priceUsd
+     
+      const watchCoin = watchListCopy.findIndex(item => item.id === coinIdCopy);
+      
+      if ( watchCoin === -1) {
+        const newCoin = {
+          id: coinCopy.id,
+          name: coinCopy.name,
+          qty:coinQtyCopy,
+          totInvest: sumCost.toFixed(0)
+        }
+        watchListCopy.push(newCoin)
+        localStorage.setItem('watchList', JSON.stringify(watchListCopy))
+        dispatch(setWatchList(watchListCopy));
+        closeAddCoin()
+      } else{
+
+        const changeCoin = watchListCopy.find(item => item.id === coinIdCopy);
+
+        const newCoin = {
+          id: changeCoin.id,
+          name: changeCoin.name,
+          qty:+changeCoin.qty+ +coinQtyCopy,
+          totInvest: +changeCoin.totInvest+ +sumCost.toFixed(0)
+        }
+
+        const watchListNew = watchListCopy.map(obj => {
+          if (obj.id === newCoin.id) {
+            return newCoin;
+          }
+          return obj;
+        });
+
+        localStorage.setItem('watchList', JSON.stringify(watchListNew))
+        dispatch(setWatchList(watchListNew));
+        closeAddCoin()
+      }
     }else{
-      console.log('handleSubmitCoinToPortfolio - no')
+      setCoinQtyError(true)
     }
+    
   }
 
   const handleChangeInterval = (e) =>{
@@ -138,6 +188,7 @@ function Coin () {
           onSubmit={handleSubmitCoinToPortfolio} 
           onChange={handleChangeCoinQty} 
           value={coinQty} 
+          errorMesage={coinQtyError}
           onClick={handleAddCoin}/>}
      <section className='coinPage'>
 

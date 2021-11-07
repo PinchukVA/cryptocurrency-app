@@ -10,7 +10,6 @@ function Home () {
   const navigate = useNavigate ();
 
   useEffect (() => {
-      localStorage.setItem('watchList', JSON.stringify([]))
       linkToRoute(navigate, Routs.MainRoute)
   },[])
 

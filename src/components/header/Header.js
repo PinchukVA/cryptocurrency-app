@@ -9,7 +9,7 @@ function Header ({onClick}) {
 
   const appState = useSelector( state => state.Reducer)
 
-  const { headerCoins, watchList,} = appState;
+  const { headerCoins, watchList,totalInvest} = appState;
 
   const renderTopCoins = (arr) => {
     let result;
@@ -28,7 +28,7 @@ function Header ({onClick}) {
       </ul>
 
       <ul className='header__portfolio-list'>
-        <li className='header__portfolio-item'> {watchList.length === 0 ? 'Portfolio empty' : ' Portf. Vol : You Rich'} </li>
+        <li className='header__portfolio-item'> {watchList.length === 0 ? 'Portfolio empty' : ` Portf. Vol :  ${totalInvest} USD`} </li>
         <li className='header__portfolio-item'>{watchList.length === 0 ? '' : ' Portf. Vol : You Rich'}</li>
       </ul>
 
