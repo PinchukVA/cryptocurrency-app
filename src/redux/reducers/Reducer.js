@@ -1,6 +1,16 @@
+const getTotalInvest = () =>{
+  const watchListCopy = JSON.parse(localStorage.getItem('watchList'))
+  if (watchListCopy === null ){
+    return 0
+  }
+  const totalValue = watchListCopy.reduce((a, b) => ({totInvest: +a.totInvest + +b.totInvest}))
+  return totalValue
+}
+
 const initialState = {
   headerCoins:[],
-  watchList: JSON.parse(localStorage.getItem('watchList')) || []
+  watchList: JSON.parse(localStorage.getItem('watchList')) || [],
+  totalInvest:getTotalInvest()
 };
 
 export const Reducer = (state = initialState, action) => {

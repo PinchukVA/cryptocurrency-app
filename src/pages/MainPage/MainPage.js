@@ -15,7 +15,7 @@ import Eclipse_1s_145px from '../../static/images/svg/Eclipse_1s_145px.svg'
 
 import { cryptoApi } from '../../api/CryptoApi'
 
-import { setTopCoins } from '../../redux/actions/Actions.js'
+import { setTopCoins, setWatchList } from '../../redux/actions/Actions.js'
 
 function MainPage () {
   const dispatch = useDispatch();
@@ -69,12 +69,12 @@ function MainPage () {
           id: coin.id,
           name: coin.name,
           qty:coinQtyCopy,
-          totInvest: sumCost
+          totInvest: sumCost.toFixed(0)
         }
         console.log('handleSubmitCoinToPortfolio - newCoin', newCoin)
         watchListCopy.push(newCoin)
         localStorage.setItem('watchList', JSON.stringify(watchListCopy))
-        // dispatch(setWatchList(watchListCopy));
+        dispatch(setWatchList(watchListCopy));
         console.log('handleSubmitCoinToPortfolio - watchListCopy after', watchListCopy)
         closeAddCoin()
       }
