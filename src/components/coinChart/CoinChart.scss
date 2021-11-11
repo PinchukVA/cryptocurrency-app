@@ -1,0 +1,42 @@
+@import '../../static/styles/Variables.scss';
+.coinPage__graph {
+  padding:15px 25px;
+  width: 100%;
+
+  .coinPage__interval__wraper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    margin: 25px 0px;
+
+    p{
+      padding: 0px 15px;
+      font-size: 16px;
+      color:$text-grey;
+    }
+
+    button{
+      background-color: $background-lemon;
+      border: 1px solid  $border-color-main;
+      border-radius: 5px;
+      font-family: $font-family-second;
+      font-size: 16px;
+      padding: 4px 15px;
+      color:$text-black;
+      transition: all 0.4s;
+
+      @media (max-width: 540px) {
+        padding: 2px 10px;
+        font-size: 12px;
+      }
+
+      &:hover{
+        transition: all 0.4s;
+        background-color: $background-orange;
+        cursor: pointer;
+      }
+    }
+
+  }
+}

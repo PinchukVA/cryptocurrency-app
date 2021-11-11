@@ -9,3 +9,5 @@ export { default as PortfolioItem } from './portfolioItem/PortfolioItem';
 export { default as PortfolioHeader } from './portfolioHeader/PortfolioHeader';
 export { default as LineChart } from './cryptoChart/CryptoChart';
 export { default as Pagination } from './pagination/Pagination';
+export { default as CoinInfoBlock } from './coinInfoBlock/CoinInfoBlock';
+export { default as CoinChart } from './coinChart/CoinChart';

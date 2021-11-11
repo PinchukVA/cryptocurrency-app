@@ -1,9 +1,7 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 
-
-function LineChart ({chartLabels, chartValues}) {
-
+function LineChart({ chartLabels, chartValues }) {
   const data = {
     labels: chartLabels,
     datasets: [
@@ -16,28 +14,28 @@ function LineChart ({chartLabels, chartValues}) {
       },
     ],
   };
-  
+
   const options = {
     scales: {
       y: {
         beginAtZero: true,
-        grid:{
-          display:false,
-        }
+        grid: {
+          display: false,
+        },
       },
       x: {
-        grid:{
-          display:false,
-        }
-      }
-    }
+        grid: {
+          display: false,
+        },
+      },
+    },
   };
 
   return (
     <>
-     <Line data={data} options={options} />
-    </> 
-  )
+      <Line data={data} options={options} />
+    </>
+  );
 }
 
 export default LineChart;

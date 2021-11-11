@@ -4,14 +4,11 @@ import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 import './AddCryptoSmall.scss';
 
-function AddCryptoSmall ({onClick}) {
+function AddCryptoSmall({ onClick }) {
   return (
-        <button 
-        className='l-list__item__button'
-        onClick={() => onClick()}
-        >
-           <FontAwesomeIcon icon={faPlusSquare} />
-        </button>
+    <button className='l-list__item__button' onClick={() => onClick()}>
+      <FontAwesomeIcon icon={faPlusSquare} />
+    </button>
   );
 }
 

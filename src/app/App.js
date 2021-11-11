@@ -1,17 +1,12 @@
-import React  from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import './App.scss';
 import './Normalize.scss';
 
-import { Routs } from '../utils/routes.js'
+import { Routs } from '../utils/routes.js';
 
-import { 
-    MainPage, 
-    Coin, 
-    Home 
-} from '../pages'
-
+import { MainPage, Coin, Home } from '../pages';
 
 function App() {
   return (
