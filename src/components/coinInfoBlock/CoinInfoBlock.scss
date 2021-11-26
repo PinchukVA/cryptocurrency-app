@@ -1,41 +1,47 @@
 @import "../../static/styles/Variables.scss";
 .coinPage__info {
-  padding: 15px 25px;
+  padding: 5px 10px;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  grid-gap: 20px;
+  grid-template-columns: repeat(1, auto);
+  grid-gap: 10px;
 
-  @media (max-width: 540px) {
-    grid-gap: 5px;
+  @media (min-width: 481px) {
+    grid-template-columns: repeat(2, auto);
   }
 
   span {
     font-family: $font-family-second;
-    font-size: 16px;
+    font-size: 14px;
+    padding: 0px 20px;
     color: $text-black;
 
-    @media (max-width: 760px) {
-      font-size: 12px;
+    @media (max-width: 768px) and (min-width: 481px) {
+      font-size: 16px;
     }
-    @media (max-width: 540px) {
-      width: 100%;
-      text-align: center;
+
+    @media  (min-width: 769px) {
+      font-size: 18px;
     }
+
     p {
       display: inline-block;
-      padding: 0px 15px;
-      font-size: 20px;
+      width: 100%;
+      font-size: 16px;
       color: $text-grey;
       font-weight: bold;
+      margin: 10px 0px;
 
-      @media (max-width: 760px) {
-        font-size: 14px;
+      @media (max-width: 768px) and (min-width: 481px) {
+        font-size: 16px;
+        margin: 10px 0px;
       }
 
-      @media (max-width: 540px) {
-        width: 100%;
+      @media  (min-width: 769px) {
+        font-size: 18px;
+        margin: 10px 0px;
       }
+
     }
   }
 }

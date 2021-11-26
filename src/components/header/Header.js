@@ -88,7 +88,8 @@ function Header() {
   useEffect(() => {
     getTopCoins();
     getInvestResult();
-  }, []);
+    console.log('useEffect-header')
+  }, [watchList]);
 
   const renderTopCoins = (arr) => {
     let result;
@@ -103,20 +104,22 @@ function Header() {
 
   return (
     <header className='header'>
-      <ul className='header__list'>{renderTopCoins(headerCoins)}</ul>
+      <div className='header__info'>
+        <ul className='header__list'>{renderTopCoins(headerCoins)}</ul>
 
-      <ul className='header__portfolio-list'>
-        <li className='header__portfolio-item'>
-          {watchList.length === 0
-            ? 'Portfolio empty'
-            : ` Portf. Vol :  ${totalInvest} USD`}
-        </li>
-        <li className='header__portfolio-item'>
-          {watchList.length === 0
-            ? ''
-            : ` ${InvestDifferent} USD (${InvestDifferentPersent}%)`}
-        </li>
-      </ul>
+        <ul className='header__portfolio-list'>
+          <li className='header__portfolio-item'>
+            {totalInvest <= 0
+              ? 'Portfolio empty'
+              : ` Portf. Vol :  ${totalInvest} USD`}
+          </li>
+          <li className='header__portfolio-item'>
+            {totalInvest <= 0
+              ? ''
+              : ` ${InvestDifferent} USD (${InvestDifferentPersent}%)`}
+          </li>
+        </ul>
+      </div>
 
       <button
         className='header__button'

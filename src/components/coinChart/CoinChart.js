@@ -7,7 +7,7 @@ function CoinChart({ onClick }) {
   return (
     <div className='coinPage__interval__wraper'>
       <p>Change Interval </p>
-      <button value='h1' onClick={()=>onClick}>
+      <button value='h1' onClick={onClick}>
         1 hour
       </button>
       <button value='h6' onClick={onClick}>
