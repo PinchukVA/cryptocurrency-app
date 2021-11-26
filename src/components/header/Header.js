@@ -88,7 +88,8 @@ function Header() {
   useEffect(() => {
     getTopCoins();
     getInvestResult();
-  }, []);
+    console.log('useEffect-header')
+  }, [watchList]);
 
   const renderTopCoins = (arr) => {
     let result;
@@ -108,12 +109,12 @@ function Header() {
 
         <ul className='header__portfolio-list'>
           <li className='header__portfolio-item'>
-            {watchList.length === 0
+            {totalInvest <= 0
               ? 'Portfolio empty'
               : ` Portf. Vol :  ${totalInvest} USD`}
           </li>
           <li className='header__portfolio-item'>
-            {watchList.length === 0
+            {totalInvest <= 0
               ? ''
               : ` ${InvestDifferent} USD (${InvestDifferentPersent}%)`}
           </li>

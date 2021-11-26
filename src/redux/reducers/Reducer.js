@@ -1,7 +1,10 @@
 // import { cryptoApi } from '../../api/CryptoApi.js';
 
-const getTotalInvest = () => {
-  const watchListCopy = JSON.parse(localStorage.getItem('watchList'));
+const getTotalInvest = (array=[]) => {
+  let watchListCopy = array
+  if (array.length ===0){
+     watchListCopy = JSON.parse(localStorage.getItem('watchList'));
+  } 
   if (watchListCopy === null || watchListCopy.length === 0) {
     return 0;
   }
@@ -26,12 +29,18 @@ const initialState = {
 };
 
 export const Reducer = (state = initialState, action) => {
+  console.log('strt-Reducer')
   const { payload } = action;
   switch (action.type) {
     case 'SET_TOP_COINS':
       return { ...state, headerCoins: payload };
     case 'SET_WATCH_LIST':
-      return { ...state, watchList: payload };
+      const resultInvest = getTotalInvest(payload)
+      return { 
+        ...state,
+         watchList: payload,
+         totalInvest:resultInvest,
+        };
     case 'SET_ADD_COIN':
       return { ...state, isAddCoin: payload };
     case 'SET_SHOW_PORTFOLIO':
