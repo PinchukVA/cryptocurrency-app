@@ -3,8 +3,7 @@
 
 .header {
   width: 100%;
-  max-width: 1140px;
-  line-height: 50px;
+  max-width: 480px;
   margin: 0px auto 30px;
   display: flex;
   align-items: center;
@@ -14,43 +13,62 @@
   -moz-box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.6);
   box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.6);
 
-  @media (max-width: 540px) {
-    flex-direction:column;
+  @media (max-width: 768px) and (min-width: 481px) {
+    max-width: 768px;
+    justify-content: space-between;
+    padding: 0px 25px;
   }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    max-width: 960px;
+    padding: 15px 25px;
+  }
+  @media (min-width: 1025px) {
+    max-width: 1140px;
+    justify-content: space-between;
+    padding: 15px 25px;
+  }
+}
+
+.header__info{
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 769px) {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  @media (min-width: 1025px) {
+    flex-direction: row;
+    align-items: center;
+  }
+
 }
 
 .header__list {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  flex-direction: column;
 
-  @media (max-width: 720px) {
-    align-items: flex-start;
-    flex-direction: column;
-
-    li{
-      line-height: 25px;
-    }
-  }
-
-  @media (max-width: 540px) {
-    width: 100%;
-    align-items: flex-start;
-    flex-wrap: wrap;
+  @media (min-width: 1025px) {
     flex-direction: row;
-
-    li{
-      max-height:30px;
-      margin-left:30px;
-    }
+    align-items: flex-end;
   }
-
-  
-
 }
 
 .header__item {
     @include global-item;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
+    line-height:25px;
+
+    @media (max-width: 1024px) and (min-width: 769px) {
+      font-size:14px;
+      line-height:32px;
+    }
+    @media (min-width: 1025px) {
+      font-size:14px;
+    }
 
     span{
       color:$text-grey;
@@ -62,27 +80,30 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-
-  @media (max-width: 540px) {
-    width:100%;
-    justify-content: center;
+  line-height:35px;
+  @media (max-width: 1024px) and (min-width: 769px) {
+    padding: 0px 15px;
   }
-
+  @media (min-width: 1025px) {
+    padding: 0px 30px;
+  }
 }
 
 .header__portfolio-item {
   @include global-item;
+  @media (max-width: 1024px) and (min-width: 769px) {
+    font-size:14px;
+    line-height:32px;
+  }
+  @media (min-width: 1025px) {
+    font-size:14px;
+  }
 }
 
 .header__button {
-  font-size: 14px;
+  font-size: 26px;
   background: none;
   transition: all 0.4s;
-
-  @media (max-width: 540px) {
-    font-size: 24px;
-    margin:15px;
-  }
 
   &:hover{
     cursor:pointer;

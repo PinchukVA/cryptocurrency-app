@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import './App.scss';
 import './Normalize.scss';
@@ -10,7 +10,7 @@ import { MainPage, Coin, Home } from '../pages';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path={Routs.HomeRoute} element={<Home />} />
         <Route path='/coin' element={<Home />} />
@@ -20,7 +20,7 @@ function App() {
         <Route path='/main/page/:PageNumber' element={<MainPage />} />
         <Route path='/coin/:id' element={<Coin />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

@@ -30,7 +30,7 @@ function AddCryptoPopUp() {
     const coinIdCopy = coinToAdd.id;
     const watchListCopy = JSON.parse(localStorage.getItem('watchList')) || [];
 
-    if (result) {
+    if (result && coinQtyCopy > 0) {
       const sumCost = coinQtyCopy * coinToAdd.priceUsd.slice(0, 7);
       const watchCoin = watchListCopy.findIndex(
         (item) => item.id === coinIdCopy
@@ -113,7 +113,7 @@ function AddCryptoPopUp() {
           </form>
           {coinQtyError && (
             <span className='popUpAdd__error'>
-              Value must be number. Try again
+              Uncorrect value, please try again.
             </span>
           )}
         </div>

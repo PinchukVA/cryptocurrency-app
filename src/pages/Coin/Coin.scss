@@ -24,27 +24,26 @@
 
 .coinPage__header {
   width: 100%;
-  padding:15px 25px;
+  padding:7px 10px;
   display:flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-start;
 
-  @media (max-width: 540px) {
-    width:100%;
-    align-items: center;
-  }
 
   .coinPage__link {
     text-decoration:none;
-    font-size:32px;
+    font-size:20px;
     padding:0px 5px;
     margin: 0px 3px;
     font-family: $font-family-name;
     color:$text-black;
     transition: all 0.4s;
 
-    @media (max-width: 540px) {
-      font-size:16px;
+    @media (max-width: 768px) and (min-width: 481px) {
+      font-size: 24px;
+    }
+    @media  (min-width: 769px) {
+      font-size: 32px;
     }
 
     &:hover{
@@ -57,13 +56,16 @@
   .coinPage__button {
     text-decoration:none;
     background:none;
-    font-size:28px;
+    font-size:18px;
     margin: 0px 25px;
     color:$color-grey;
     transition: all 0.4s;
 
-    @media (max-width: 540px) {
-      font-size:20px;
+    @media (max-width: 768px) and (min-width: 481px) {
+      font-size: 24px;
+    }
+    @media  (min-width: 769px) {
+      font-size: 32px;
     }
 
     &:hover{
@@ -91,10 +93,17 @@
   }
 
   h4{
-    font-size:14px;
+    font-size:10px;
     padding: 0px 4px;
     margin: 5px 3px;
     color:$text-grey;
     font-family: $font-family-second;
+
+    @media (max-width: 768px) and (min-width: 481px) {
+      font-size: 12px;
+    }
+    @media  (min-width: 769px) {
+      font-size: 14px;
+    }
   }
 }
